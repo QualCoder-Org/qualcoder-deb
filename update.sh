@@ -1,24 +1,36 @@
 #!/bin/bash
-set -e
+# set -e
 
-VERSION="3.8.2"
-TEMPLATE_DIR="qualcoder-template"
+if [ -z "$1" ]; then
+    echo "Usage: $0 <version> (ex: 3.8.3)"
+    exit 1
+fi
+
+VERSION="$1"
 NEW_DIR="qualcoder-${VERSION}"
-UPSTREAM_URL="https://github.com/ccbogel/QualCoder/releases/download/3.8.2/QualCoder_3_8_2_ubuntu"
 
-# 1. Copier le template
+# Compile QualCoder
+#git clone git@github.com:ccbogel/QualCoder.git
+#cd QualCoder
+#python3 -m venv ".env"
+#source .env/bin/activate
+#python3 -m pip install --upgrade pip
+#pip install -r requirements.txt
+#pyinstaller qualcoder_onefile.spec
+#deactivate
+#cd ../
+
+#  Create .deb
 echo "Copy template ${NEW_DIR}..."
-cp -r "$TEMPLATE_DIR" "$NEW_DIR"
+cp -r "qualcoder-template" "$NEW_DIR"
 
-# 2. Télécharger le binaire
-echo "Download QualCoder ${VERSION}..."
-wget -O "${NEW_DIR}/src/qualcoder" "$UPSTREAM_URL"
-chmod +x "${NEW_DIR}/src/qualcoder"  # Rendre exécutable
+cp "QualCoder/dist/QualCoder" "${NEW_DIR}/src/qualcoder"
+chmod +x "${NEW_DIR}/src/qualcoder"
 
-# 3. Mettre à jour le changelog
-echo "📝 Update changelog ..."
+
+echo "Update changelog ..."
 cat > "${NEW_DIR}/debian/changelog" << EOF
-qualcoder (${VERSION}-1) UNRELEASED; urgency=medium
+qualcoder (${VERSION}) UNRELEASED; urgency=medium
 
   * New upstream release ${VERSION}.
   * See https://github.com/ccbogel/QualCoder/releases/tag/${VERSION}
@@ -26,7 +38,9 @@ qualcoder (${VERSION}-1) UNRELEASED; urgency=medium
  -- QualCoder Team <contact@qualcoder.org>  $(date -R)
 EOF
 
-# 4. Construire le package
+sed -i "s/Standards-Version:.*/Standards-Version: ${VERSION}/" "${NEW_DIR}/debian/control"
+
+
 echo "Build version ${VERSION}..."
 cd "$NEW_DIR"
 debuild -us -uc
