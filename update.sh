@@ -1,7 +1,6 @@
 #!/bin/bash
-set -e  # Arrête le script en cas d'erreur
+set -e
 
-# Vérifier que la version est fournie
 if [ -z "$1" ]; then
     echo "Usage: $0 <version> (ex: 3.8.3)"
     exit 1
