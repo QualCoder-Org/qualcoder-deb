@@ -1,0 +1,4 @@
+ dpkg-buildpackage -us -uc -ui clean
+dpkg-buildpackage: erreur: option ou paramètre inconnu clean
+
+Utilisez --help pour de l'information sur l'utilisation du programme.

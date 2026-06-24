@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Idempotent pre-install script to make sure everything is ready for our app to be installed
-
-echo "qualcoder: This is a preinst message"
