@@ -1,18 +1,13 @@
 #!/bin/bash
 set -e
 
-if [ -z "$1" ]; then
-    echo "Usage: $0 <version> (ex: 3.8.3)"
-    exit 1
-fi
-
-VERSION="$1"
+VERSION="3.8.2"
 TEMPLATE_DIR="qualcoder-template"
 NEW_DIR="qualcoder-${VERSION}"
-UPSTREAM_URL="https://github.com/ccbogel/QualCoder/releases/download/${VERSION}/QualCoder_${VERSION}_ubuntu"
+UPSTREAM_URL="https://github.com/ccbogel/QualCoder/releases/download/3.8.2/QualCoder_3_8_2_ubuntu"
 
 # 1. Copier le template
-echo "📁 Copie du template vers ${NEW_DIR}..."
+echo "Copy template ${NEW_DIR}..."
 cp -r "$TEMPLATE_DIR" "$NEW_DIR"
 
 # 2. Télécharger le binaire
