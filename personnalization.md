@@ -1,3 +1,5 @@
-Put binary in qualcoder_3.8.2._all/ot/qualcoder
-rename the version numero on the directory
-change DEBIAN/control ; qualcoder_3.8.2._all/usr/share/applications/QualCoder
+- Put binary in qualcoder_3.8.2._all/ot/qualcoder
+- rename the version numero on the directory
+- change version in DEBIAN/control ; qualcoder_3.8.2._all/usr/share/applications/QualCoder
+- compile : `dpkg-deb --build ./mypackage_1.0_all`
+- test : `sudo gdebi -n ./mypackage_1.0_all.deb`
