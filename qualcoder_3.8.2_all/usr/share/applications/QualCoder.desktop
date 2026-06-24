@@ -1,0 +1,18 @@
+[Desktop Entry]
+
+Version=3.8.2
+
+Name=QualCoder
+GenericName=qualcoder
+Icon=/usr/share/icons/qualcoder.xpm
+Comment=Qualitative data analysis for text, images, audio, video.
+Exec=/opt/qualcoder/QualCoder
+TryExec=/opt/qualcoder/QualCoder
+
+# Should this app run in terminal ?
+Terminal=false
+
+Type=Application
+Categories=Sciences;
+Keywords=Sciences;;
+Name[fr_FR]=QualCoder
