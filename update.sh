@@ -10,15 +10,15 @@ VERSION="$1"
 NEW_DIR="qualcoder-${VERSION}"
 
 # Compile QualCoder
-#git clone git@github.com:ccbogel/QualCoder.git
-#cd QualCoder
-#python3 -m venv ".env"
-#source .env/bin/activate
-#python3 -m pip install --upgrade pip
-#pip install -r requirements.txt
-#pyinstaller qualcoder_onefile.spec
-#deactivate
-#cd ../
+git clone git@github.com:ccbogel/QualCoder.git
+cd QualCoder
+python3 -m venv ".env"
+source .env/bin/activate
+python3 -m pip install --upgrade pip
+pip install -r requirements.txt
+pyinstaller qualcoder_onefile.spec
+deactivate
+cd ../
 
 #  Create .deb
 echo "Copy template ${NEW_DIR}..."
